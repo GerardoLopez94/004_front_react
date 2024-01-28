@@ -96,6 +96,24 @@ const updateBoard = (index) => {
             <Square isSelected={turn === TRUNS.X} Children={TRUNS.X}></Square>
             <Square isSelected={turn === TRUNS.O} Children={TRUNS.O}></Square>
         </section>
+
+        {
+            winner !== null && (
+                <section className="winner">
+                  <div className="text">
+                    <h2>
+                        {winner ? `Ganador: ${winner}` : 'Empate'}
+                    </h2>
+                    <header className="win">
+                      {winner && <Square isSelected={winner} Children={winner}></Square>}
+                    </header>
+                    <footer>
+                        Empezar de nuevo
+                    </footer>
+                  </div>
+                </section>
+            )
+        }
       </main>
     )
 }
