@@ -71,9 +71,18 @@ const updateBoard = (index) => {
         setwinner(newWinner);
     }
 }
+
+const resetGame = () => {
+    setBoard(Array(9).fill(null));
+    setTurn(TRUNS.X);
+    setwinner(null);
+}
+
+
     return (
       <main className= 'board'>
         <h1>Tic Tac Toe</h1>
+        <button onClick={resetGame}> Reset del juego </button>
         <section className='game'>
           {
             board.map( (square, index) => {
@@ -107,8 +116,9 @@ const updateBoard = (index) => {
                     <header className="win">
                       {winner && <Square isSelected={winner} Children={winner}></Square>}
                     </header>
-                    <footer>
-                        Empezar de nuevo
+                    <footer >
+                        <button onClick={resetGame}> Empezar de nuevo </button>
+                        
                     </footer>
                   </div>
                 </section>
