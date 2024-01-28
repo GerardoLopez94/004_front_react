@@ -22,6 +22,10 @@ function App() {
     //Creamos nuestro tablero y rellenamos con null
 const [board, setBoard] = useState(Array(9).fill(null));
 const [turn, setTurn] = useState(TRUNS.X);
+
+updateBoard = () => {
+    
+}
     return (
       <main className= 'board'>
         <h1>Tic Tac Toe</h1>
@@ -32,7 +36,7 @@ const [turn, setTurn] = useState(TRUNS.X);
                     <Square 
                     key={index}
                     index={index}
-                  
+                    updateBoard={updateBoard}
                     >
                        
                     </Square>
