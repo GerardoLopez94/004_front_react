@@ -28,6 +28,8 @@ const [board, setBoard] = useState(Array(9).fill(null));
 const [turn, setTurn] = useState(TRUNS.X);
 
 const updateBoard = (index) => {
+    //Si ya hay un valor en el square, no hacemos nada
+    if (board[index]) return;
     //Actualizamos el square en que dimos click
     const newBoard = [...board];
     newBoard[index] = turn;
