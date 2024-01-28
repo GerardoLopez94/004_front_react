@@ -11,8 +11,12 @@ const TRUNS = {
 const Square = ({Children, isSelected, updateBoard, index}) => {
     //esto para cambiar la clase segun el turbo
     const className = `square ${isSelected ? 'is-selected' : ''}`
+
+    const handleClick = () => {
+        updateBoard();
+    }
     return (
-        <div className={className}>
+        <div onClick={handleClick} className={className}>
             {Children}
         </div>
     );
@@ -23,8 +27,10 @@ function App() {
 const [board, setBoard] = useState(Array(9).fill(null));
 const [turn, setTurn] = useState(TRUNS.X);
 
-updateBoard = () => {
-    
+const updateBoard = () => {
+    //Debemos calcular el nuevo turno
+    const newTurn = turn === TRUNS.X ? TRUNS.O : TRUNS.X;
+    setTurn(newTurn);
 }
     return (
       <main className= 'board'>
@@ -34,9 +40,10 @@ updateBoard = () => {
             board.map( (square, index) => {
                 return (
                     <Square 
+                    
                     key={index}
-                    index={index}
                     updateBoard={updateBoard}
+                    index={index}
                     >
                        
                     </Square>
