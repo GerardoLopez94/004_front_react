@@ -8,9 +8,11 @@ const TRUNS = {
 
 
 
-const Square = ({Children, updateBoard, index}) => {
+const Square = ({Children, isSelected, updateBoard, index}) => {
+    //esto para cambiar la clase segun el turbo
+    const className = `square ${isSelected ? 'is-selected' : ''}`
     return (
-        <div className="square">
+        <div className={className}>
             {Children}
         </div>
     );
@@ -18,7 +20,8 @@ const Square = ({Children, updateBoard, index}) => {
 
 function App() {
     //Creamos nuestro tablero y rellenamos con null
-const [board, setBoard] = useState(Array(9).fill('x'));
+const [board, setBoard] = useState(Array(9).fill(null));
+const [turn, setTurn] = useState(TRUNS.X);
     return (
       <main className= 'board'>
         <h1>Tic Tac Toe</h1>
@@ -29,13 +32,18 @@ const [board, setBoard] = useState(Array(9).fill('x'));
                     <Square 
                     key={index}
                     index={index}
-                    Children={index}
+                  
                     >
                        
                     </Square>
                 )
             })
           }  
+        </section>
+      
+        <section className="turn">
+            <Square isSelected={turn === TRUNS.X} Children={TRUNS.X}></Square>
+            <Square isSelected={turn === TRUNS.O} Children={TRUNS.O}></Square>
         </section>
       </main>
     )
