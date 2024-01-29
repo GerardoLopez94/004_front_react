@@ -80,11 +80,11 @@ const resetGame = () => {
 
 
     return (
-      <main className= 'board'>
+    <main className= 'board'>
         <h1>Tic Tac Toe</h1>
         <button onClick={resetGame}> Reset del juego </button>
         <section className='game'>
-          {
+        {
             board.map( (square, index) => {
                 return (
                     <Square 
@@ -94,13 +94,11 @@ const resetGame = () => {
                     index={index}
                     Children={square}
                     >
-                       
                     </Square>
                 )
             })
-          }  
+        }  
         </section>
-      
         <section className="turn">
             <Square isSelected={turn === TRUNS.X} Children={TRUNS.X}></Square>
             <Square isSelected={turn === TRUNS.O} Children={TRUNS.O}></Square>
@@ -108,23 +106,22 @@ const resetGame = () => {
 
         {
             winner !== null && (
-                <section className="winner">
-                  <div className="text">
+            <section className="winner">
+                <div className="text">
                     <h2>
                         {winner ? `Ganador: ${winner}` : 'Empate'}
                     </h2>
                     <header className="win">
-                      {winner && <Square isSelected={winner} Children={winner}></Square>}
+                    {winner && <Square isSelected={winner} Children={winner}></Square>}
                     </header>
                     <footer >
                         <button onClick={resetGame}> Empezar de nuevo </button>
-                        
                     </footer>
-                  </div>
+                </div>
                 </section>
             )
         }
-      </main>
+    </main>
     )
 }
 
